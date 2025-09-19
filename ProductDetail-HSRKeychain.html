@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blubuk Blubuk Art Shop - Jia Family</title>
+</head>
+<body>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <section class="Product-Detail">
+      <div class="detail">
+        <img id="product-img" src="ProductCatalogImg/Screenshot 2025-08-19 193211.png">
+        <h1>Honkai Star Rail Keychain</h1>
+        <p>Harga: Rp 35.000/piece | All Rp 385.000</p>
+        <p>Size: 5x5cm approx</p>
+        <p>Tinted acrylic</p>
+
+        <label for="variant">Pilih Warna/Karakter:</label>
+        <select id="variant">
+            <option value="1-Random">1 Random</option>
+            <option value="2-Random">2 Random</option>
+            <option value="All">All</option>
+        </select>
+      </div>
+    </section>
+
+    <button onclick="addToCart()">Add to Cart</button>
+
+    <script>
+        function addToCart() {
+            const variant = document.getElementById('variant').value;
+            let price = 35000;
+            let name = `Honkai Star Rail Keychain - ${variant}`;
+
+            if (variant === 'All') {
+                price = 385000;
+                name = 'Honkai Star Rail Keychain - All Set';
+            }
+
+            const product = {
+                name: name,
+                price: price,
+                variant: variant
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>

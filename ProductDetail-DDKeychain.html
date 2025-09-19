@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blubuk Blubuk Art Shop - Jia Family</title>
+</head>
+<body>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <section class="Product-Detail">
+      <div class="detail">
+        <img id="product-img" src="ProductCatalogImg/Screenshot 2025-08-21 182536.png">
+        <h1>Dandadan Keychain</h1>
+        <p>Harga: Rp 35.000/piece | All Rp 70.000</p>
+
+        <label for="variant">Pilih Warna/Karakter:</label>
+        <select id="variant">
+            <option value="Biru">Biru</option>
+            <option value="Hijau">Hijau</option>
+            <option value="Merah">Merah</option>
+            <option value="Oranye">Oranye</option>
+            <option value="All">All</option>
+        </select>
+      </div>
+    </section>
+
+    <button onclick="addToCart()">Add to Cart</button>
+
+    <script>
+        function addToCart() {
+            const variant = document.getElementById('variant').value;
+            let price = 20000;
+            let name = `Jia Family Foil Photocard - ${variant}`;
+
+            if (variant === 'All') {
+                price = 70000;
+                name = 'Jia Family Foil Photocards - All Set';
+            }
+
+            const product = {
+                name: name,
+                price: price,
+                variant: variant
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>

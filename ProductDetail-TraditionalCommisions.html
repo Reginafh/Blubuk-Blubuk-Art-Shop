@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blubuk Blubuk Art Shop - Jia Family</title>
+</head>
+<body>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <section class="Product-Detail">
+      <div class="detail">
+        <img id="product-img" src="ProductCatalogImg/Screenshot 2025-08-25 210329.png">
+        <h1>Traditional Commisions</h1>
+        <h3>(Preorder only)</h3>
+        <p>Harga: Rp 95.000/char | 2 Char Rp 140.000 | All Rp 280.000</p>
+        <p>Size: A6 watercolor paper</p>
+        <p>B&W only. Inked with micron pen and fully shaded with watercolor markers</p>
+        <p>Bust up only</p>
+
+        <label for="variant">Pilih Warna/Karakter:</label>
+        <select id="variant">
+            <option value="1-Char">1-Char</option>
+            <option value="2-Char">2-Char</option>
+            <option value="All">All</option>
+        </select>
+      </div>
+    </section>
+
+    <script>
+        function addToCart() {
+            const variant = document.getElementById('variant').value;
+            let price = 6000;
+            let name = `Hades Stickers - ${variant}`;
+
+            if (variant === 'All') {
+                price = 30000;
+                name = 'Hades Stickers - All Set';
+            }
+
+            const product = {
+                name: name,
+                price: price,
+                variant: variant
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blubuk Blubuk Art Shop - Produk Detail</title>
+</head>
+<body>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <h1>World of W Corp Sticker Sheet</h1>
+    <img src="ProductCatalogImg/Screenshot 2025-08-19 185417.png" alt="Limbus Company"><br>
+    <p>Harga: Rp 35.000</p>
+
+    <button onclick="addToCart()">Add to Cart</button>
+
+    <script>
+        function addToCart() {
+            const product = {
+                name: "World of W Corp Sticker Sheet",
+                price: 35000
+            };
+
+            // Ambil data keranjang dari localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Tambahkan produk ke keranjang
+            cart.push(product);
+
+            // Simpan kembali ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>

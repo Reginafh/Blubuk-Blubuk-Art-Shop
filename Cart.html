@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Keranjang Belanja</title>
+</head>
+<body>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <h1>Keranjang Belanja Anda</h1>
+    <div id="cart-items"></div>
+    <p><strong>Total: Rp <span id="total-price">0</span></strong></p>
+    <a href="Order.html">
+        <button class="back-button" onclick="backbutton(Order.html)">Order</button>
+    </a>
+
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsDiv = document.getElementById('cart-items');
+            const totalPriceSpan = document.getElementById('total-price');
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = "<p>Keranjang masih kosong.</p>";
+                totalPriceSpan.textContent = "0";
+                return;
+            }
+
+            cartItemsDiv.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <p><strong>${item.name}</strong></p>
+                    <p>Warna/Karakter: ${item.variant}</p>
+                    <p>Harga: Rp ${item.price.toLocaleString('id-ID')}</p>
+                    <hr>
+                `;
+                cartItemsDiv.appendChild(div);
+                total += item.price;
+            });
+
+            totalPriceSpan.textContent = total.toLocaleString('id-ID');
+        }
+
+        function deleteItem(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Hapus item berdasarkan index
+            localStorage.setItem('cart', JSON.stringify(cart)); // Simpan ulang
+            loadCart(); // Muat ulang keranjang
+        }
+
+        window.onload = loadCart;
+    </script>
+    
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsDiv = document.getElementById('cart-items');
+            const totalPriceSpan = document.getElementById('total-price');
+            let total = 0;
+
+            if (cart.length === 0) {
+                cartItemsDiv.innerHTML = "<p>Keranjang masih kosong.</p>";
+                return;
+            }
+
+            cartItemsDiv.innerHTML = '';
+            cart.forEach((item) => {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <p><strong>${item.name}</strong></p>
+                    <p>Harga: Rp ${item.price.toLocaleString('id-ID')}</p>
+                    <hr>
+                `;
+                cartItemsDiv.appendChild(div);
+                total += item.price;
+            });
+
+            totalPriceSpan.textContent = total.toLocaleString('id-ID');
+        }
+
+        function deleteItem(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Hapus item berdasarkan index
+            localStorage.setItem('cart', JSON.stringify(cart)); // Simpan ulang
+            loadCart(); // Muat ulang keranjang
+        }
+
+        window.onload = loadCart;
+    </script>
+</body>
+</html>

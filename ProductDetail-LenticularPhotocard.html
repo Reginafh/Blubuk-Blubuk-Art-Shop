@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blubuk Blubuk Arts Shop - Produk Detail</title>
+</head>
+<body>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <h1>Lenticular Photocard</h1>
+    <img src="ProductCatalogImg/Screenshot 2025-08-19 180120.png" alt="Limbus Company"><br>
+    <p>Harga: Rp 25.000</p>
+    <p>Size: 5,5 x 8,5 cm | 6 x 9 cm</p>
+
+    <button onclick="addToCart()">Add to Cart</button>
+
+    <script>
+        function addToCart() {
+            const product = {
+                name: "Lenticular Photocard",
+                price: 25000
+            };
+
+            // Ambil data keranjang dari localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Tambahkan produk ke keranjang
+            cart.push(product);
+
+            // Simpan kembali ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>

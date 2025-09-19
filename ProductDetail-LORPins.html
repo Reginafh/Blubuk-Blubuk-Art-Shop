@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Blubuk Blubuk Art Shop - Jia Family</title>
+</head>
+<body>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <section class="Product-Detail">
+      <div class="detail">
+        <img id="product-img" src="ProductCatalogImg/Screenshot 2025-08-19 185441.png">
+        <h1>Library of Ruina Pins</h1>
+        <p>Harga: Rp 10.000/piece | 2 Piece Rp 15.000 | All Rp 105.000</p>
+        <p>Size: 4x4cm</p>
+        <p>Doff Lamination</p>
+
+        <label for="variant">Pilih Warna/Karakter:</label>
+        <select id="variant">
+            <option value="1-Random">1 Random</option>
+            <option value="2-Random">2 Random</option>
+            <option value="All">All</option>
+        </select>
+      </div>
+    </section>
+
+    <button onclick="addToCart()">Add to Cart</button>
+
+    <script>
+        function addToCart() {
+            const variant = document.getElementById('variant').value;
+            let price = 10000;
+            let name = `Library of Ruina Pins - ${variant}`;
+
+            if (variant === '2-Random'){
+                price = 15000;
+                name = 'Library of Ruina Pins'
+            }
+
+            if (variant === 'All') {
+                price = 105000;
+                name = 'Library of Ruina Pins - All Set';
+            }
+
+            const product = {
+                name: name,
+                price: price,
+                variant: variant
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>

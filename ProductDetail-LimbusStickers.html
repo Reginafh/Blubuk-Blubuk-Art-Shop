@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Blubuk Blubuk Art Shop</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="brand">
+        <a class="navbar-brand" href="#">
+          <img src="Logo Nana 1.png" alt="Logo">
+		    </a>
+		    <div class="brand-text">
+			  <span class="name">Blubuk Blubuk</span>
+		  	<span>The Arts Shop</span>
+		    </div>
+	    </div>
+        <ul id="MenuItems" class="nav-left">
+            <li>
+              <a class="nav-link active" aria-current="page" href="Index.html">Home</a>
+            </li>
+            <li>
+              <a class="nav-link" href="Product.html">Product</a>
+            </li>
+            <li>
+              <a class="nav-link" href="Event.html">Event</a>
+            </li>
+            <li>
+              <a class="nav-link" href="About.html">About Us</a>
+            </li>
+        </ul>
+		    <ul class="nav-right">
+			  <li>
+				<a href="Cart.html">
+          			<img src="c:\HCI\Fashion\lovepik-shopping-cart-png-image_400246975_wh1200-removebg-preview.png" alt="button" width="55" height="55">
+        		</a>
+			</li>
+		</ul>
+    </nav>
+  </header>
+  <main>
+    <a href="Product.html">
+        <button class="back-button" onclick="backbutton(Product.html)">&#10094;</button>
+    </a>
+    <section class="product-detail">
+      <div class="slide">
+        <button class="previous" onclick="previousbutton()">&#10094;</button>
+        <img id="product-img" src="ProductCatalogImg/Screenshot 2025-08-15 173240.png">
+        <button class="next" onclick="nextbutton()">&#10095;</button>
+      </div>
+      <div class="detail">
+        <h2 id="product-name">Jia Family Foil Photocards</h2>
+        <p id="product-description">Photocards</p>
+        <p id="product-price" class="price">Rp 20.000/Piece</p>
+        <p id="product-price" class="price">All Rp 70.000</p>
+        <p>Color : Blue, Green, Red, Orange</p>
+        <p>Size : 36, 38, 40, 42, 44, 46, 48</p>
+        <option type="option">Red</option>
+        <label for="Quantity">Quantity : </label>
+        <input type="number" id="Quantity" min="1" value="1">
+        <div class="button">
+          <a href="Cart.html">
+            <button onclick="AddtoCart(Cart.html)" id="cart-items">Add to Cart</button>
+          </a>
+          <button onclick="OrderNow(Order.html)">Order Now</button>
+        </div>
+      </div>
+      <script>
+        function AddToCart() {
+            // Data produk
+            const name = document.getElementById('product-name').textContent;
+            const price = parseInt(document.querySelector('#product-price span').textContent);
+
+            const product = { name, price };
+
+            // Ambil cart dari localStorage (jika ada)
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Tambahkan produk ke keranjang
+            cart.push(product);
+
+            // Simpan kembali ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+      </script>
+    </section>
+    <script>
+        function AddToCart() {
+            // Data produk
+            const name = document.getElementById('product-name').textContent;
+            const price = parseInt(document.querySelector('#product-price span').textContent);
+
+            const product = { name, price };
+
+            // Ambil cart dari localStorage (jika ada)
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Tambahkan produk ke keranjang
+            cart.push(product);
+
+            // Simpan kembali ke localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Arahkan ke halaman cart
+            window.location.href = 'cart.html';
+        }
+    </script>
+  </main>
+  <footer class="footer">
+		<div class="footer-container">
+			<div class="row">
+				<div class="footer-col-1 footer-column">
+					<h3>Download Our Apps</h3>
+					<p>Download App for Android and Ios Mobile Phone</p>
+					<div class="footer-img">
+						<img src="download.png">
+						<img src="images.jpeg">
+					</div>
+				</div>
+				<div class="footer-col-2 footer-column">
+					<img src="Logo Nana 1.png">
+					<p>Luxury and Lavish Experience</p>
+				</div>
+				<div class="footer-col-3 footer-column">
+				    <h3>Sosial Media</h3>
+					<ul>
+						<li>Instagram</li>
+						<li>Whatsapp</li>
+						<li>Twitter</li>
+						<li>Facebook</li>
+					</ul>
+				</div>
+				<div class="footer-col-4 footer-column">
+					<h3>Contact Us</h3>
+					<ul>
+						<li>Address</li>
+						<li>Phone Number</li>
+						<li>Email</li>
+					</ul>
+				</div>
+			</div>
+			<hr><p class="Copyright">Copyright &copy; 2025 - Regina</p>
+		</div>
+	</footer>
+
+</body>
+</html>
