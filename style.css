@@ -8,7 +8,7 @@ body{
     background: #E5D9F2;
 }
 header{
-    position: relative;
+    position: flex;
     width: 100%;
     background-color: #A594F9;
     color: darkblue;
