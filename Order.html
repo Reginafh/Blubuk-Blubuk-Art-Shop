@@ -68,6 +68,41 @@
             totalSpan.textContent = total.toLocaleString('id-ID');
         }
 
+      document.getElementById('order-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const address = document.getElementById('address').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const items = JSON.parse(localStorage.getItem('cart')) || [];
+
+  if (!name || !address || !phone || items.length === 0) {
+    alert("Harap lengkapi data dan pastikan keranjang tidak kosong.");
+    return;
+  }
+
+  const orderData = { name, address, phone, items };
+
+  fetch('/api/order', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(orderData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    alert(data.message || "Pesanan berhasil dikirim!");
+    localStorage.removeItem('cart');
+    window.location.href = "Product.html";
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert("Terjadi kesalahan saat mengirim pesanan.");
+  });
+});
+
+
         document.getElementById('order-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
